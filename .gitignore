@@ -1,0 +1,13 @@
+.backup/
+.swap/
+.undo/
+
+# Plugin folder
+plugged/
+
+# The plugin manager plug.vim is bootstrapped in the init.vim file in case
+# it is not already present.
+autoload/plug.vim
+
+# Plugin specific files
+.netrwhist

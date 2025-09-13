@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Change to the directory where the script is called from
+# This ensures we're in the right project context for PDM
+cd "$(pwd)"
+
+# Run pyright-langserver through PDM
+exec python -m pdm run pyright-langserver "$@"
