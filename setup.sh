@@ -2,7 +2,7 @@
 # Corporate Vim Setup Script
 # Run this in Git Bash to set up your development environment
 
-set -e  # Exit on any error
+# set -e  # Exit on any error
 
 echo "🏢 Setting up Corporate Vim environment..."
 
@@ -11,9 +11,9 @@ echo "📁 Creating Vim directories..."
 mkdir -p ~/.vim/{backup,swap,undo,autoload,plugged}
 
 # Install vim-plug (plugin manager)
-echo "🔌 Installing vim-plug..."
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# echo "🔌 Installing vim-plug..."
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Copy the vimrc (you should save the artifact content as .vimrc)
 echo "📝 Please save the vimrc configuration to ~/.vimrc"
@@ -38,7 +38,9 @@ python -m pdm config --global python.use_venv False
 # Install Node.js packages if Node is available
 if command -v npm &> /dev/null; then
     echo "📦 Installing Node.js packages..."
-    npm install -g prettier eslint pyright
+    npm install -g prettier || echo "Failed to install prettier"
+    npm install -g eslint || echo "Failed to install eslint"
+    npm install -g pyright || echo "Failed to install pyright"
 else
     echo "⚠️  Node.js not found. Skipping Node.js packages."
     echo "   Consider installing Node.js for additional tooling support."

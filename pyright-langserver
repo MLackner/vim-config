@@ -4,5 +4,8 @@
 # This ensures we're in the right project context for PDM
 cd "$(pwd)"
 
-# Run pyright-langserver through PDM
-exec python -m pdm run pyright-langserver "$@"
+# find your global npm “root” directory
+NPM_BIN=$(npm root -g)
+
+# exec the shebang script directly
+exec python -m pdm run node "${NPM_BIN}/pyright/langserver.index.js" "$@"
